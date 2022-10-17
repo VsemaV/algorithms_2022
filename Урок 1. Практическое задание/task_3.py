@@ -17,3 +17,30 @@
 Примечание: ПРОШУ ВАС ВНИМАТЕЛЬНО ЧИТАТЬ ЗАДАНИЕ!
 """
 
+info = {'a': 20, 'b': 53, 'c': 74, 'd': 5, 'e': 60}
+
+def check_1(lst_obj):                                                               #O(n^2)
+
+    sort_list = list(lst_obj.keys())                                                #O(1)
+    N = len(sort_list)                                                              #O(1)
+
+    for i in range(N - 1):                                                          #O(n)
+        for j in range(N - i - 1):                                                  #O(n)
+            if lst_obj[sort_list[j]] > lst_obj[sort_list[j + 1]]:                   #O(1)
+                sort_list[j], sort_list[j + 1] = sort_list[j + 1], sort_list[j]     #O(1)
+    print(sort_list[-3:])                                                           #O(1)
+
+
+def check_2(lst_obj):                                                               #O(n log n)
+
+    sorting = dict(sorted(lst_obj.items(), key=lambda item: item[1]))               #O(n log n)
+    sort_list = list(sorting.keys())                                                #O(1)
+    return sort_list[-3:]                                                           #O(1)
+
+
+
+check_1(info)
+
+print(check_2(info))
+
+
